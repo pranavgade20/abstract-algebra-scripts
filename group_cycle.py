@@ -1,8 +1,14 @@
 # finds cycles of group (Z_n,.)
+def coprime(a, b):
+    for i in range(2, min(a, b) + 1):
+        if (a % i == 0) and (b % i == 0):
+            return False
+    return True
+
 
 def main():
     n = 26
-    l = [1] + list(filter(lambda x: n % x != 0, range(1, n)))
+    l = [1] + list(filter(lambda x: coprime(x, n), range(1, n)))
     d = {}
     res = {}
     for i in l:
